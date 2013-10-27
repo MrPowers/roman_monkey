@@ -1,21 +1,17 @@
 require "spec_helper"
 
 describe String do
-  context "#to_arabic_number" do
-    it "converts 'V' to 5" do
-      expect("V".to_arabic_number).to eq 5
+  context "#to_arabic" do
+    it "converts a Roman numeral to an integer" do
+      expect("MMCLIV".to_arabic).to eq 2_154
     end
 
-    it "converts 'MCMIV' to 1904" do
-      expect("MCMIV".to_arabic_number).to eq 1904
+    it "converts 'IV' to 4" do
+      expect("IV".to_arabic).to eq 4
     end
 
-    it "raises an exception for 'blah'" do
-      expect{ "blah".to_arabic_number }.to raise_error
-    end
-
-    it "returns nil for empty string" do
-      expect("".to_arabic_number).to be_nil
+    it "converts 'MMMMCMXCIX' to 4999" do
+      expect("MMMMCMXCIX".to_arabic).to eq 4999
     end
   end
 end
